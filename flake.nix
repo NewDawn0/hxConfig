@@ -12,7 +12,7 @@
       mkPkgs = system: nixpkgs.legacyPackages.${system};
     in {
       overlays.default =
-        (final: prev: { gen = self.packages.${prev.system}.default; });
+        (final: prev: { helix = self.packages.${prev.system}.default; });
       packages = eachSystem (system:
         let
           pkgs = mkPkgs system;
