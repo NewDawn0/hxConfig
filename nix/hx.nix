@@ -10,10 +10,10 @@ let
     installPhase = ''
       mkdir -p $out/lib/themes
       cp ${
-        (pkgs.formats.toml { }).generate "config" (import ./config.nix)
+        (pkgs.formats.toml { }).generate "config" (import ../config/config.nix)
       } $out/lib/config.toml
       cp ${
-        (pkgs.formats.toml { }).generate "theme" (import ./config.nix)
+        (pkgs.formats.toml { }).generate "theme" (import ../config/theme.nix)
       } $out/lib/themes/custom.toml
     '';
   };
