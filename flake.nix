@@ -16,14 +16,14 @@
       packages = eachSystem (system:
         let
           pkgs = mkPkgs system;
-          hx = import ./hx.nix { inherit pkgs; };
-          runtime = import ./runtime.nix { inherit pkgs; };
+          hx = import ./nix/hx.nix { inherit pkgs; };
+          runtime = import ./nix/runtime.nix { inherit pkgs; };
         in {
           default = pkgs.writeShellApplication {
             name = "hx";
             runtimeInputs = [ pkgs.helix ] ++ runtime;
             text = ''
-              hx --config ${hx.hxConfig}/lib/config.toml "$@"
+              HELIX_RUNTIME="" hx --config ${hx.hxConfig}/lib/config.toml "$@"
             '';
             meta = {
               license = pkgs.lib.licenses.mit;
