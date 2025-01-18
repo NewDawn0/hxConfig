@@ -1,5 +1,9 @@
 { pkgs }:
 let
+  cfg = import ../config/config.nix;
+  keys = import ../config/keys.nix;
+  theme = import ../config/theme.nix;
+in {
   hxConfig = pkgs.stdenv.mkDerivation {
     name = "hxConfig";
     src = null;
@@ -8,13 +12,24 @@ let
     dontPatch = true;
     dontUnpack = true;
     installPhase = ''
-      mkdir -p $out/lib/themes
+      mkdir -p $out/lib
       cp ${
-        (pkgs.formats.toml { }).generate "config" (import ../config/config.nix)
+        (pkgs.formats.toml { }).generate "config" (cfg // keys)
       } $out/lib/config.toml
-      cp ${
-        (pkgs.formats.toml { }).generate "theme" (import ../config/theme.nix)
-      } $out/lib/themes/custom.toml
     '';
   };
-in { inherit hxConfig; }
+  hxRt = pkgs.stdenv.mkDerivation {
+    name = "hxRuntime";
+    src = null;
+    dontBuild = true;
+    dontConfigure = true;
+    dontPatch = true;
+    dontUnpack = true;
+    installPhase = ''
+      mkdir -p $out/lib/runtime/themes
+      cp ${
+        (pkgs.formats.toml { }).generate "theme" theme
+      } $out/lib/runtime/themes/custom.toml
+    '';
+  };
+}

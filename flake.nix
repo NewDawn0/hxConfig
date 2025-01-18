@@ -23,7 +23,7 @@
             name = "hx";
             runtimeInputs = [ pkgs.helix ] ++ runtime;
             text = ''
-              HELIX_RUNTIME="" hx --config ${hx.hxConfig}/lib/config.toml "$@"
+              HELIX_RUNTIME="${hx.hxRt}/lib/runtime" hx --config ${hx.hxConfig}/lib/config.toml "$@"
             '';
             meta = {
               license = pkgs.lib.licenses.mit;

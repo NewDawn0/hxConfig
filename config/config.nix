@@ -1,5 +1,5 @@
 {
-  theme = "base16_transparent";
+  theme = "custom";
   editor = {
     # General
     auto-format = true;
