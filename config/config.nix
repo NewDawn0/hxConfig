@@ -2,15 +2,16 @@
   theme = "base16_transparent";
   editor = {
     # General
-    line-number = "relative";
-    middle-click-paste = false;
-    gutters = [ "diagnostics" "line-numbers" "spacer" "diff" ];
-    bufferline = "multiple";
-    mouse = true;
-    auto-pairs = true;
     auto-format = true;
+    auto-pairs = true;
+    bufferline = "multiple";
+    color-modes = true;
     completion-replace = true;
     completion-trigger-len = 1;
+    gutters = [ "diagnostics" "line-numbers" "spacer" "diff" ];
+    line-number = "relative";
+    middle-click-paste = false;
+    mouse = true;
     # Cursor
     cursor-shape = {
       insert = "bar";
@@ -80,57 +81,5 @@
       character = "▏";
       skip-levels = 1;
     };
-  };
-  # Keybinds
-  keys = {
-    normal = {
-      # Vim
-      "{" = "goto_next_paragraph";
-      "}" = "goto_prev_paragraph";
-      "$" = "goto_line_end";
-      "0" = "goto_line_start";
-      x = "delete_char_backward";
-      S-g = "goto_last_line";
-      d.d = [ "kill_to_line_end" "kill_to_line_start" ];
-      # Space prefixed
-      space = {
-        # Find
-        f = {
-          f = "file_picker";
-          c = "file_picker_in_current_directory";
-          s = "symbol_picker";
-          j = "jumplist_picker";
-          b = "buffer_picker";
-        };
-        # Code actions & diagnostics
-        c = {
-          a = "code_action";
-          d = "diagnostics_picker";
-          s = "signature_help";
-          f = ":format";
-        };
-        t = {
-          t = "goto_definition";
-          i = "goto_implementation";
-          r = "goto_reference";
-          d = "goto_type_definition";
-        };
-        # buffers
-        b = {
-          n = "goto_next_buffer";
-          p = "goto_previous_buffer";
-        };
-      };
-      # Comment
-      g.c = {
-        c = "toggle_line_comments";
-        b = "toggle_block_comments";
-      };
-      S-z = {
-        S-z = ":wq";
-        S-q = ":q";
-      };
-    };
-    select = { s.s = ":sort"; };
   };
 }
