@@ -3,6 +3,7 @@ let
   cfg = import ../config/config.nix;
   keys = import ../config/keys.nix;
   theme = import ../config/theme.nix;
+  langs = import ../config/langs.nix;
 in {
   hxConfig = pkgs.stdenv.mkDerivation {
     name = "hxConfig";
@@ -30,6 +31,9 @@ in {
       cp ${
         (pkgs.formats.toml { }).generate "theme" theme
       } $out/lib/runtime/themes/custom.toml
+      cp ${
+        (pkgs.formats.toml { }).generate "langs" langs
+      } $out/lib/runtime/languages.toml
     '';
   };
 }

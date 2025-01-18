@@ -27,9 +27,12 @@ let
     marksman
     metals
     nil
+    nixd
     nushell
     ols
     perlnavigator
+    protols
+    pyright
     python3Packages.jedi-language-server
     python3Packages.python-lsp-server
     ruff
@@ -49,6 +52,6 @@ let
     zls
   ];
   daps = [ delve lldb ];
-  fmts = [ delve dfmt ols swift-format zig ];
+  fmts = [ delve dfmt ols swift-format zig nixfmt-classic ];
   other = [ ripgrep ];
 in lib.lists.unique (lsps ++ daps ++ fmts ++ other)
