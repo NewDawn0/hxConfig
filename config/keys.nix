@@ -9,7 +9,7 @@
       "}" = "goto_prev_paragraph";
       "$" = "goto_line_end";
       "0" = "goto_line_start";
-      x = "delete_char_backward";
+      x = "delete_char_forward";
       S-g = "goto_last_line";
       S-v = "select_mode";
       # Delete
