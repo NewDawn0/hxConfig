@@ -1,5 +1,5 @@
 {
-  description = "An extensible project generator";
+  description = "Nixified Helix config";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
@@ -26,6 +26,7 @@
               HELIX_RUNTIME="${hx.hxRt}/lib/runtime" hx --config ${hx.hxConfig}/lib/config.toml "$@"
             '';
             meta = {
+              description = "My fully configured helix config";
               license = pkgs.lib.licenses.mit;
               maintainers = with pkgs.lib.maintainers; [ NewDawn0 ];
               platforms = pkgs.lib.platforms.all;
