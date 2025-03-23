@@ -5,7 +5,7 @@
 
   outputs = { self, utils, ... }: {
     overlays.default = final: prev: {
-      helix = self.packages.${prev.system}.default;
+      ndhelix = self.packages.${prev.system}.default;
     };
     packages = utils.lib.eachSystem { } (pkgs: {
       default = let
